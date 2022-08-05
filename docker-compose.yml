@@ -1,0 +1,24 @@
+version: '3'
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins
+    build:
+      context: jenkins
+    ports:
+      - "8080:8080"
+      - "5000:5000"
+    volumes:
+      - "$PWD/jenkins_home:/var/jenkins_home"
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    networks:
+      - net
+  remote_host:
+    container_name: remote-host
+    image: remote-host
+    build:
+      context: jenkins
+    networks:
+      - net
+networks:
+  net:
