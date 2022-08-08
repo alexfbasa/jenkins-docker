@@ -13,12 +13,5 @@ services:
       - '/var/run/docker.sock:/var/run/docker.sock'
     networks:
       - net
-  remote_host:
-    container_name: remote-host
-    image: remote-host
-    build:
-      context: jenkins
-    networks:
-      - net
 networks:
   net:
