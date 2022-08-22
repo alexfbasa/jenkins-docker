@@ -12,6 +12,7 @@ RUN mkdir -p /tmp/download && \
     mv /tmp/download/docker/docker* /usr/local/bin/ && \
     rm -rf /tmp/download && \
     groupadd -g 995 docker && \
+    chmod 666 /var/run/docker.sock \
     usermod -aG staff,docker jenkins
 
 # Install app dependencies
