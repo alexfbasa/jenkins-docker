@@ -12,10 +12,9 @@ RUN mkdir -p /tmp/download && \
     mv /tmp/download/docker/docker* /usr/local/bin/ && \
     rm -rf /tmp/download && \
     groupadd -g 995 docker && \
-    usermod -aG staff,docker jenkins
-RUN touch /var/run/docker.sock
-RUN chown root:docker /var/run/docker.sock
-RUN chmod 664 /var/run/docker.sock
+    gpasswd -a jenkins docker && \
+    usermod -aG docker jenkins
+
 
 # Install app dependencies
 RUN pip install --upgrade pip
