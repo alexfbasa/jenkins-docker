@@ -15,6 +15,8 @@ RUN mkdir -p /tmp/download && \
     gpasswd -a jenkins docker && \
     usermod -aG docker jenkins
 
+RUN touch /var/run/docker.sock
+RUN chmod 666 /var/run/docker.sock
 
 # Install app dependencies
 RUN pip install --upgrade pip
